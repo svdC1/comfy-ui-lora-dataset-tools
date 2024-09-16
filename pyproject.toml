@@ -3,12 +3,12 @@ name = "comfy-ui-lora-dataset-tools"
 description = "NODES:Directory Loader, Filter Images Without Faces, Detect Faces and Draw Detection Box"
 version = "1.0.0"
 license = {file = "LICENSE"}
-
+dependencies = ["charloratools"]
 [project.urls]
 Repository = "https://github.com/svdC1/comfy-ui-lora-dataset-tools"
 #  Used by Comfy Registry https://comfyregistry.org
 
 [tool.comfy]
-PublisherId = ""
+PublisherId = "svdc"
 DisplayName = "comfy-ui-lora-dataset-tools"
 Icon = ""
