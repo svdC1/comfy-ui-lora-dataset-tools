@@ -3,12 +3,10 @@ import torch
 from pathlib import Path
 
 
-class DirLoaderNode:
+class DirLoaderSelectorNode:
     """
-    Custom node which loads all images from a directory in a
-    batch torch tensor. The width and height of all images
-    are upscaled to match those of the largest image file in the
-    directory using PIL's Image.LANCZOS.
+    Custom node which loads all images from a directory as separate
+    torch tensors and allows for selection of a single image.
     """
 
     @classmethod
@@ -16,18 +14,21 @@ class DirLoaderNode:
         return {"required": {
             "directory_path": ("STRING", {
                 "default": ""
+            }),
+            "idx": ("INT", {
+                "default": 0
             })
         }}
 
     @classmethod
-    def IS_CHANGED(cls, directory_path: str):
+    def IS_CHANGED(cls, directory_path: str, idx: int):
         return float("NaN")
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "load_images"
     CATEGORY = "LoRaDatasetTools/loaders"
 
-    def load_images(self, directory_path: str):
+    def load_images(self, directory_path: str, idx: int):
         # Validating path
         if not directory_path.strip():
             raise RuntimeError("Please provide a directory path!")
@@ -37,14 +38,17 @@ class DirLoaderNode:
 
         elif not Path(directory_path).resolve().is_dir():
             raise RuntimeError("Path isn't a directory!")
-
         # Loading images
         try:
             p = Path(directory_path).resolve()
-            imgs = clt.utils.dir_path_to_img_batch(p)
+            gm = clt.SysFileManager.GalleryManager(path=p)
             # [B,C,W,H] - > [B,W,H,C]
-            imgs = torch.permute(imgs, (0, 2, 3, 1))
-            return (imgs,)
+            imgs = []
+            for ip in gm.image_paths:
+                t = clt.utils.img_path_to_tensor(ip).unsqueeze(0)
+                img = torch.permute(t, (0, 2, 3, 1))
+                imgs.append(img)
+            return (imgs[idx],)
 
         except Exception as e:
             raise RuntimeError(

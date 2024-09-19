@@ -1,7 +1,6 @@
 import charloratools as clt
 import torch
 from pathlib import Path
-import time
 import numpy as np
 from PIL import Image
 import tempfile
@@ -27,11 +26,11 @@ class FilterFacesNode:
 
     @classmethod
     def IS_CHANGED(cls, **kwargs):
-        return time.time()
+        return float("NaN")
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "filter_images"
-    CATEGORY = "LoRaDatasetTools"
+    CATEGORY = "LoRaDatasetTools/filters"
 
     def filter_images(self,
                       images: torch.Tensor,

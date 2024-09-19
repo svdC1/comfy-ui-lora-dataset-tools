@@ -1,7 +1,7 @@
 [project]
 name = "comfy-ui-lora-dataset-tools"
 description = "NODES:Directory Loader, Filter Images Without Faces, Detect Faces and Draw Detection Box"
-version = "1.0.0"
+version = "1.1.0"
 license = {file = "LICENSE"}
 dependencies = ["charloratools"]
 [project.urls]
