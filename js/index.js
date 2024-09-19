@@ -16,10 +16,7 @@ app.registerExtension({
 
     // Function to display error messages to the user
     function displayError(message) {
-      // Create or select an error message container
-      let errorContainer = document.getElementById('LoRaDatasetTools-error');
-      if (!errorContainer) {
-        errorContainer = document.createElement('div');
+        let errorContainer = document.createElement('div');
         errorContainer.id = 'LoRaDatasetTools-error';
         // Style the error message container
         errorContainer.style.position = 'fixed';
@@ -41,5 +38,4 @@ app.registerExtension({
         }
       }, 5000);
     }
-  }
-});
+  });
