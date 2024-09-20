@@ -1,6 +1,7 @@
 import charloratools as clt
 import torch
 from pathlib import Path
+from comfy_execution.graph_utils import GraphBuilder
 
 
 class DirLoaderNode:
@@ -26,6 +27,7 @@ class DirLoaderNode:
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "load_images"
     CATEGORY = "LoRaDatasetTools/loaders"
+    OUTPUT_NODE = True
 
     def load_images(self, directory_path: str):
         # Validating path
@@ -40,11 +42,17 @@ class DirLoaderNode:
 
         # Loading images
         try:
+            graph = GraphBuilder()
             p = Path(directory_path).resolve()
             imgs = clt.utils.dir_path_to_img_batch(p)
             # [B,C,W,H] - > [B,W,H,C]
             imgs = torch.permute(imgs, (0, 2, 3, 1))
-            return (imgs,)
+            graph.node("PreviewImage",
+                       images=imgs,
+                       prompt=None,
+                       extra_pnginfo=None)
+            return {"result": (imgs,),
+                    "expand": graph.finalize(), }
 
         except Exception as e:
             raise RuntimeError(

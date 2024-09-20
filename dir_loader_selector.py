@@ -1,6 +1,7 @@
 import charloratools as clt
 import torch
 from pathlib import Path
+from comfy_execution.graph_utils import GraphBuilder
 
 
 class DirLoaderSelectorNode:
@@ -15,20 +16,21 @@ class DirLoaderSelectorNode:
             "directory_path": ("STRING", {
                 "default": ""
             }),
-            "idx": ("INT", {
+            "index_number": ("INT", {
                 "default": 0
             })
         }}
 
     @classmethod
-    def IS_CHANGED(cls, directory_path: str, idx: int):
+    def IS_CHANGED(cls, directory_path: str, index_number: int):
         return float("NaN")
 
     RETURN_TYPES = ("IMAGE",)
     FUNCTION = "load_images"
     CATEGORY = "LoRaDatasetTools/loaders"
+    OUTPUT_NODE = True
 
-    def load_images(self, directory_path: str, idx: int):
+    def load_images(self, directory_path: str, index_number: int):
         # Validating path
         if not directory_path.strip():
             raise RuntimeError("Please provide a directory path!")
@@ -40,6 +42,7 @@ class DirLoaderSelectorNode:
             raise RuntimeError("Path isn't a directory!")
         # Loading images
         try:
+            graph = GraphBuilder()
             p = Path(directory_path).resolve()
             gm = clt.SysFileManager.GalleryManager(path=p)
             # [B,C,W,H] - > [B,W,H,C]
@@ -48,7 +51,13 @@ class DirLoaderSelectorNode:
                 t = clt.utils.img_path_to_tensor(ip).unsqueeze(0)
                 img = torch.permute(t, (0, 2, 3, 1))
                 imgs.append(img)
-            return (imgs[idx],)
+
+            graph.node("PreviewImage",
+                       images=imgs[index_number],
+                       prompt=None,
+                       extra_pnginfo=None)
+            return {"result": (imgs[index_number],),
+                    "expand": graph.finalize(), }
 
         except Exception as e:
             raise RuntimeError(

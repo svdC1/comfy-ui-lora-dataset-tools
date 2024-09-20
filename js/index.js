@@ -7,4 +7,4 @@ app.registerExtension({
   name: "LoRaDatasetTools.extension",
   async setup() {
     console.log("LoRaDatasetTools extension loaded!");
-    }});
+    }})
