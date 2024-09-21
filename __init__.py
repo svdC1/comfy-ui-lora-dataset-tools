@@ -15,6 +15,10 @@ from .filter_specific import FilterSpecificNode
 from .filter_multiple import FilterFacesMultipleNode
 from .html_gallery_node import HTMLGalleryNode
 from .delete_duplicates import DeleteDuplicatesNode
+from .load_gm_node import GMLoaderNode
+from .gm_to_torch import GMToTorchNode
+from .torch_to_gm import TorchToGMNode
+from .add_gm_node import AddGMNode
 
 NODE_CLASS_MAPPINGS = {
   "Directory Loader": DirLoaderNode,
@@ -24,7 +28,11 @@ NODE_CLASS_MAPPINGS = {
   "Filter Images Without Specific Face": FilterSpecificNode,
   "Filter Images With Multiple Faces": FilterFacesMultipleNode,
   "Save As HTML Image Gallery": HTMLGalleryNode,
-  "Delete Duplicates": DeleteDuplicatesNode
+  "Delete Duplicates": DeleteDuplicatesNode,
+  "Load Gallery Manager": GMLoaderNode,
+  "Gallery Manager to Batch": GMToTorchNode,
+  "Batch to Gallery Manager": TorchToGMNode,
+  "Add Gallery Manager": AddGMNode
 }
 
 WEB_DIRECTORY = './js'

@@ -1,4 +1,4 @@
-# ![LDT Logo](https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/51f4586d-9481-4420-54d2-216cd3114900/640x360)
+# ![LDT Logo](https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/51f4586d-9481-4420-54d2-216cd3114900/w=1280,h=640px,fit=crop)
 
 ### A custom node for ComfyUI providing nodes to facilitate the process of image gathering,filtering and processing when creating a training dataset to use for training loras.
 
@@ -10,12 +10,39 @@
     are upscaled to match those of the largest image file in the
     directory using PIL's `Image.LANCZOS`
 
+### Directory Selector
+>   Loads all images from a direcotry as list of torch tensors,
+    allowing the user to preview images like the built-in 
+    ```"Preview Image"``` node and select one from the list
+    to be the node's output.
+
 ### Filter Images Without Faces
 >   Takes as input a batch of images and returns only those which
     contain at least one face in it using `facenet_pytorch`'s implementation
     of `MTCNN`
 
+### Load Gallery Manager
+>   Custom node which loads all images from a directory to a
+    Gallery Manager object which can perform some custom
+    functions defined in the extension.
+    ```Warning:```
+    **The operations performed with Gallery Managers
+    take place in the OS file system using the charloratools
+    package, for more information please check the [package's
+    github](https://github.com/svdC1/charloratools). While using the operation nodes in ComfyUI you can expect their return inside the "output" folder.** Uses the
+    ```Preview Image Node``` to show the images that were batched
+    in the UI.
 
+### Gallery Manager to Batch & Batch to Gallery Manager
+>   Custom nodes which allow easy conversion between 
+    ```GalleryManager``` outputs and ```torch's tensor batches of
+    images```
+
+### Add Gallery Manager
+>   Custom node which ```adds all images from 2
+    Gallery Manager nodes into a single
+    torch image batch``` tensor **(Will duplicate the repeated images in
+    the result.)**, Also Returns a Gallery Manager Object.
 ### Filter Images Without Specific Face
 > Takes as input a batch of images and a single reference image
   and returns images from the batch which contain the reference

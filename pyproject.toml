@@ -1,7 +1,7 @@
 [project]
 name = "comfy-ui-lora-dataset-tools"
-description = "NODES:Directory Loader, Directory Selector, Filter Images Without Faces, Detect Faces and Draw Detection Box, Filter Images Without Specific Face, Filter Images With Multiple Faces, Save as HTML Image Gallery, Delete Duplicates"
-version = "1.2.0"
+description = "Quality of life nodes to organize a Lora Training Dataset."
+version = "1.3.0"
 license = {file = "LICENSE"}
 dependencies = ["charloratools"]
 [project.urls]
@@ -11,4 +11,4 @@ Repository = "https://github.com/svdC1/comfy-ui-lora-dataset-tools"
 [tool.comfy]
 PublisherId = "svdc"
 DisplayName = "comfy-ui-lora-dataset-tools"
-Icon = "https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/51f4586d-9481-4420-54d2-216cd3114900/800x800"
+Icon = "https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/9e18543b-6132-48fd-725f-6f20e9d1b200/w=800,h=400,fit=crop"
