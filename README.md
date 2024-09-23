@@ -1,6 +1,5 @@
 # ![LDT Logo](https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/51f4586d-9481-4420-54d2-216cd3114900/w=1280,h=640px,fit=crop)
 
->[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FsvdC1%2Fcomfy-ui-lora-dataset-tools&count_bg=%23061656&title_bg=%23555555&icon=postwoman.svg&icon_color=%2330A679&title=Checks&edge_flat=false)](https://hits.seeyoufarm.com)
 >![publish](https://github.com/svdC1/comfy-ui-lora-dataset-tools/actions/workflows/publish.yml/badge.svg)
 
 ### A custom node for ComfyUI providing nodes to facilitate the process of image gathering,filtering and processing when creating a training dataset to use for training loras.
