@@ -19,6 +19,7 @@ from .load_gm_node import GMLoaderNode
 from .gm_to_torch import GMToTorchNode
 from .torch_to_gm import TorchToGMNode
 from .add_gm_node import AddGMNode
+from .face_similarity_node import FaceSimNode
 
 NODE_CLASS_MAPPINGS = {
   "Directory Loader": DirLoaderNode,
@@ -32,7 +33,8 @@ NODE_CLASS_MAPPINGS = {
   "Load Gallery Manager": GMLoaderNode,
   "Gallery Manager to Batch": GMToTorchNode,
   "Batch to Gallery Manager": TorchToGMNode,
-  "Add Gallery Manager": AddGMNode
+  "Add Gallery Manager": AddGMNode,
+  "Face Similarity": FaceSimNode
 }
 
 WEB_DIRECTORY = './js'

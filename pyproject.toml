@@ -1,7 +1,7 @@
 [project]
 name = "comfy-ui-lora-dataset-tools"
 description = "Quality of life nodes to organize a Lora Training Dataset."
-version = "1.3.0"
+version = "1.4.0"
 license = {file = "LICENSE"}
 dependencies = ["charloratools"]
 [project.urls]

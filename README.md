@@ -2,7 +2,7 @@
 
 >![publish](https://github.com/svdC1/comfy-ui-lora-dataset-tools/actions/workflows/publish.yml/badge.svg)
 
-### A custom node for ComfyUI providing nodes to facilitate the process of image gathering,filtering and processing when creating a training dataset to use for training loras.
+### Nodes to facilitate the process of *filtering, loading and managing images* when creating a lora training dataset.
 
 # Nodes
 
@@ -22,6 +22,10 @@
 >   Takes as input a batch of images and returns only those which
     contain at least one face in it using `facenet_pytorch`'s implementation
     of `MTCNN`
+
+### Face Similarity
+>   Takes as input two images, containing a single face, and returns the
+    *similarity percentage* `(Cosine Similarity between the embeddings provided by facenet_pytorch's implementation of IncepetionResnetV1, multiplied by 100)` between the two faces.
 
 ### Load Gallery Manager
 >   Custom node which loads all images from a directory to a
@@ -74,6 +78,8 @@
 >   Filters images with multiple faces -
     Takes as input a torch image batch and returns only
     those which have only a single face on it.
+
+# Installing
     
 # Roadmap
 
