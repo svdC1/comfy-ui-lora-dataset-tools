@@ -79,8 +79,22 @@
     Takes as input a torch image batch and returns only
     those which have only a single face on it.
 
-# Installing
-    
+# Manual Install
+ ### 1. Go to the *custom_nodes* folder in the ComfyUI directory on terminal.
+ ### 2. Clone this repo.
+ ```bash
+git clone https://github.com/svdC1/comfy-ui-lora-dataset-tools.git
+ ```
+ ### 3. Install dependencies in your ComfyUI environment
+ ```bash
+ # With ComfyUI env activated
+ pip install charloratools
+
+ # For python embedded ComfyUI Package
+ # make sure to go to the python_embedded directory
+ # then (on windows)
+  .\python.exe -m pip install charloratools
+ ```
 # Roadmap
 
  - Implement the rest of [charloratools](https://www.github.com/svdC1/charloratools) functionalities.

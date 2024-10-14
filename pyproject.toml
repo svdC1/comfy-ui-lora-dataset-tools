@@ -1,7 +1,7 @@
 [project]
 name = "comfy-ui-lora-dataset-tools"
 description = "Quality of life nodes to organize a Lora Training Dataset."
-version = "1.4.0"
+version = "1.4.1"
 license = {file = "LICENSE"}
 dependencies = ["charloratools"]
 [project.urls]
@@ -11,4 +11,4 @@ Repository = "https://github.com/svdC1/comfy-ui-lora-dataset-tools"
 [tool.comfy]
 PublisherId = "svdc"
 DisplayName = "comfy-ui-lora-dataset-tools"
-Icon = "https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/9e18543b-6132-48fd-725f-6f20e9d1b200/w=800,h=400,fit=crop"
+Icon = "https://imagedelivery.net/YCQ3OFRYiR1R_AeUslNHiw/9e18543b-6132-48fd-725f-6f20e9d1b200/w=300,h=300,fit=crop"
